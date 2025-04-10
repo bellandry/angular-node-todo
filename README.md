@@ -48,5 +48,5 @@ Visit: http://localhost:4200
 
 ### Auth Endpoints
 
-- `GET /api/auth/register`— Register User
+- `POST /api/auth/register`— Register User
 - `POST /api/auth/login` — Log user in
