@@ -39,7 +39,14 @@ Visit: http://localhost:4200
 
 ## API Endpoints
 
-- `code GET /tasks`— Get all tasks
-- `code POST /tasks` — Create a new task
-- `code PUT /tasks/:id` — Update a task
-- `code DELETE /tasks/:id` — Delete a task
+### Tasks endpoints
+
+- `code GET /api/tasks`— Get all tasks
+- `code POST /api/tasks` — Create a new task
+- `code PUT /api/tasks/:id` — Update a task
+- `code DELETE /api/tasks/:id` — Delete a task
+
+### Auth Endpoints
+
+- `code GET /api/auth/register`— Register User
+- `code POST /api/auth/login` — Log user in
