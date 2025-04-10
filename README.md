@@ -14,7 +14,7 @@ A simple full-stack web application to manage tasks (CRUD Operations) built with
 - Add task (modal form)
 - Edit task (reuses the same modal form)
 - Delete task with confirmation modal
-- RESTful API
+- RESTful API with secure routes & authentication
 - Modular architecture (frontend/backend separation)
 
 ## How to Run Locally
@@ -41,12 +41,12 @@ Visit: http://localhost:4200
 
 ### Tasks endpoints
 
-- `code GET /api/tasks`— Get all tasks
-- `code POST /api/tasks` — Create a new task
-- `code PUT /api/tasks/:id` — Update a task
-- `code DELETE /api/tasks/:id` — Delete a task
+- `GET /api/tasks`— Get all tasks
+- `POST /api/tasks` — Create a new task
+- `PUT /api/tasks/:id` — Update a task
+- `DELETE /api/tasks/:id` — Delete a task
 
 ### Auth Endpoints
 
-- `code GET /api/auth/register`— Register User
-- `code POST /api/auth/login` — Log user in
+- `GET /api/auth/register`— Register User
+- `POST /api/auth/login` — Log user in
