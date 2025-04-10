@@ -1,1 +1,15 @@
-<p>task-form works!</p>
+<form (submit)="submitTask(); $event.preventDefault()">
+  <input
+    type="text"
+    [(ngModel)]="title"
+    name="title"
+    placeholder="Titre"
+    required
+  />
+  <textarea
+    [(ngModel)]="description"
+    name="description"
+    placeholder="Description"
+  ></textarea>
+  <button type="submit">Ajouter</button>
+</form>
