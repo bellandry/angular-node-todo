@@ -1,12 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Task, TaskService } from '../../services/task.service';
+import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-modal.component';
 import { TaskFormComponent } from '../task-form/task-form.component';
 
 @Component({
   selector: 'task-list',
   standalone: true,
-  imports: [CommonModule, TaskFormComponent],
+  imports: [CommonModule, TaskFormComponent, ConfirmationModalComponent],
   templateUrl: './task-list.component.html',
   styleUrl: './task-list.component.css',
 })
@@ -81,6 +82,24 @@ export class TaskListComponent implements OnInit {
       this.taskService.createTask(newTask).subscribe(() => {
         this.loadTasks();
         this.closeModal();
+      });
+    }
+  }
+
+  showDeleteModal = false;
+  taskToDelete: string | undefined;
+
+  openDeleteModal(taskId: string) {
+    this.taskToDelete = taskId;
+    this.showDeleteModal = true;
+  }
+
+  confirmDelete() {
+    if (this.taskToDelete) {
+      this.taskService.deleteTask(this.taskToDelete).subscribe(() => {
+        this.loadTasks();
+        this.showDeleteModal = false;
+        this.taskToDelete = undefined;
       });
     }
   }
