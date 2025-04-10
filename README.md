@@ -35,6 +35,8 @@ npm install
 ng serve
 ```
 
+Visit: http://localhost:4200
+
 ## API Endpoints
 
 - `code GET /tasks`— Get all tasks
