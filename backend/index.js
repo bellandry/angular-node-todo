@@ -5,6 +5,7 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 const taskRoutes = require("./routes/task.routes");
+const authRoutes = require("./routes/auth.routes");
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use("/api/auth", authRoutes);
 app.use("/api/tasks", taskRoutes);
 
 mongoose
