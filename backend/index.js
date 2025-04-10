@@ -1,12 +1,17 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
 const dotenv = require("dotenv");
+const { getTasks } = require("./controllers/task.controller");
 dotenv.config();
 
 const app = express();
 
-app.use("/", (req, res) => {
-  return res.send("Successfully connected");
+app.use(cors());
+app.use(express.json());
+
+app.use("/", async (req, res) => {
+  await getTasks(req, res);
 });
 
 mongoose
