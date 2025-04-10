@@ -8,7 +8,7 @@ const getTasks = async (req, res) => {
 
 const createTask = async (req, res) => {
   const { title } = req.body;
-  if (!title || title.lenght == "") {
+  if (!title || title.trim() == "") {
     return res.status(400).json({ message: "Title can't be empty." });
   }
   const task = new Task(req.body);
@@ -45,7 +45,7 @@ const taskExist = async (taskId, response) => {
     return response.status(400).json({ message: "Invalid task ID." });
   }
 
-  const task = await Task.findById(id);
+  const task = await Task.findById(taskId);
   if (!task) {
     return response.status(404).json({ message: "Task not found." });
   }
