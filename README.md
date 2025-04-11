@@ -10,6 +10,7 @@ A simple full-stack web application to manage tasks (CRUD Operations) built with
 
 ## Features
 
+- Register and login to user account
 - Task list display
 - Add task (modal form)
 - Edit task (reuses the same modal form)
@@ -23,6 +24,8 @@ A simple full-stack web application to manage tasks (CRUD Operations) built with
 
 ```bash
 cd backend
+scp .env.example .env // edit with your datas
+
 npm install
 npm run start
 ```
@@ -50,3 +53,4 @@ Visit: http://localhost:4200
 
 - `POST /api/auth/register`— Register User
 - `POST /api/auth/login` — Log user in
+- `GET /api/auth/me` — Get logged user infos
