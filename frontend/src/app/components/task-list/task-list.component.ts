@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { AuthService, User } from '../../services/auth.service';
 import { Task, TaskService } from '../../services/task.service';
 import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-modal.component';
 import { TaskFormComponent } from '../task-form/task-form.component';
@@ -13,6 +14,7 @@ import { TaskFormComponent } from '../task-form/task-form.component';
 })
 export class TaskListComponent implements OnInit {
   tasks: Task[] = [];
+  currentUser: User | null = null;
 
   showModal: boolean = false;
   editingTask: any = null;
@@ -20,10 +22,25 @@ export class TaskListComponent implements OnInit {
   title: string = '';
   description: string = '';
 
-  constructor(private taskService: TaskService) {}
+  constructor(
+    private taskService: TaskService,
+    private authService: AuthService
+  ) {}
 
   ngOnInit(): void {
     this.loadTasks();
+    this.currentUser = this.authService.getCurrentUser();
+    if (!this.currentUser) {
+      this.authService.getUserInfo().subscribe({
+        next: (user) => {
+          this.currentUser = user;
+        },
+      });
+    }
+  }
+
+  logout() {
+    this.authService.logout();
   }
 
   onTaskSaved() {
