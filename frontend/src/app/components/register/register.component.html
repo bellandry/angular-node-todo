@@ -1,6 +1,6 @@
 <main class="container h-screen flex flex-col items-center justify-center">
-  <h2 class="font-bold text-3xl text-slate-800 mb-2">🔐 Login</h2>
-  <p class="text-gray-500 text-md mb-8">Login and start manage your tasks</p>
+  <h2 class="font-bold text-3xl text-slate-800 mb-2">🔐 Register</h2>
+  <p class="text-gray-500 text-md mb-8">Create an account to proceed</p>
   <form (ngSubmit)="onSubmit()" class="flex flex-col gap-4">
     <div class="fflex flex-col gap-2 font-medium">
       <label for="username">Username:</label>
@@ -34,8 +34,8 @@
       Login
     </button>
     <p>
-      Don't have an account?
-      <a routerLink="/register" class="text-blue-500">Register</a>
+      Already have an account?
+      <a routerLink="/login" class="text-blue-500">Login</a>
     </p>
   </form>
 </main>

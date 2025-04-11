@@ -5,13 +5,13 @@ import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-register',
   standalone: true,
   imports: [FormsModule, CommonModule, RouterLink],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.css',
+  templateUrl: './register.component.html',
+  styleUrl: './register.component.css',
 })
-export class LoginComponent {
+export class RegisterComponent {
   username: string = '';
   password: string = '';
   error: string = '';
@@ -19,10 +19,9 @@ export class LoginComponent {
   constructor(private authService: AuthService, private router: Router) {}
 
   onSubmit(): void {
-    this.authService.login(this.username, this.password).subscribe({
-      next: (response) => {
-        this.authService.setToken(response.token);
-        this.router.navigate(['/']);
+    this.authService.register(this.username, this.password).subscribe({
+      next: () => {
+        this.router.navigate(['/login']);
       },
       error: (error) => {
         this.error = error.error.message || 'An error occurred';
