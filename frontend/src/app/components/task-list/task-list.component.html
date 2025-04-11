@@ -1,55 +1,62 @@
-<task-form
-  *ngIf="showModal"
-  [title]="title"
-  [description]="description"
-  [editingTask]="editingTask"
-  (titleChange)="title = $event"
-  (descriptionChange)="description = $event"
-  (submitForm)="submitTask()"
-  (saved)="onTaskSaved()"
-  (cancel)="closeModal()"
-></task-form>
+<main class="container max-w-[800px] mx-auto py-4 px-2">
+  <h1 class="text-3xl font-bold text-center text-slate-800 mb-3">
+    📝 Task Manager
+  </h1>
+  <p class="text-gray-500 text-center mb-8">Organize your day efficiently</p>
 
-<confirmation-modal
-  *ngIf="showDeleteModal"
-  (confirm)="confirmDelete()"
-  (cancel)="showDeleteModal = false"
-></confirmation-modal>
+  <task-form
+    *ngIf="showModal"
+    [title]="title"
+    [description]="description"
+    [editingTask]="editingTask"
+    (titleChange)="title = $event"
+    (descriptionChange)="description = $event"
+    (submitForm)="submitTask()"
+    (saved)="onTaskSaved()"
+    (cancel)="closeModal()"
+  ></task-form>
 
-<div class="flex justify-end mb-4">
-  <button
-    class="bg-slate-900 rounded-lg hover:bg-slate-800 text-white px-4 py-2 shadow"
-    (click)="openModal()"
-  >
-    New task
-  </button>
-</div>
+  <confirmation-modal
+    *ngIf="showDeleteModal"
+    (confirm)="confirmDelete()"
+    (cancel)="showDeleteModal = false"
+  ></confirmation-modal>
 
-<div>
-  <h2 class="text-3xl font-bold mb-8">All your tasks</h2>
-  <ul class="space-y-4">
-    <li
-      *ngFor="let task of tasks"
-      class="bg-white border border-gray-300 hover:shadow-md rounded-xl px-4 py-4 flex justify-between items-center transition-all"
+  <div class="flex justify-end mb-4">
+    <button
+      class="bg-slate-900 rounded-lg hover:bg-slate-800 text-white px-4 py-2 shadow"
+      (click)="openModal()"
     >
-      <div>
-        <h3 class="text-lg font-semibold text-gray-800">{{ task.title }}</h3>
-        <p class="text-gray-600">{{ task.description }}</p>
-      </div>
-      <div class="flex gap-2">
-        <button
-          (click)="editTask(task)"
-          class="bg-emerald-500 hover:bg-emerald-600 text-white rounded-lg py-1 px-3"
-        >
-          Edit
-        </button>
-        <button
-          (click)="openDeleteModal(task._id!)"
-          class="bg-red-500 hover:bg-red-600 text-white rounded-lg py-1 px-3"
-        >
-          Delete
-        </button>
-      </div>
-    </li>
-  </ul>
-</div>
+      New task
+    </button>
+  </div>
+
+  <div>
+    <h2 class="text-3xl font-bold mb-8">All your tasks</h2>
+    <ul class="space-y-4">
+      <li
+        *ngFor="let task of tasks"
+        class="bg-white border border-gray-300 hover:shadow-md rounded-xl px-4 py-4 flex justify-between items-center transition-all"
+      >
+        <div>
+          <h3 class="text-lg font-semibold text-gray-800">{{ task.title }}</h3>
+          <p class="text-gray-600">{{ task.description }}</p>
+        </div>
+        <div class="flex gap-2">
+          <button
+            (click)="editTask(task)"
+            class="bg-emerald-500 hover:bg-emerald-600 text-white rounded-lg py-1 px-3"
+          >
+            Edit
+          </button>
+          <button
+            (click)="openDeleteModal(task._id!)"
+            class="bg-red-500 hover:bg-red-600 text-white rounded-lg py-1 px-3"
+          >
+            Delete
+          </button>
+        </div>
+      </li>
+    </ul>
+  </div>
+</main>
